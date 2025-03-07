@@ -119,7 +119,7 @@ void Rules::clear()
 std::vector<Token> Rules::analyze(const std::string &input) const
 {
     const std::u16string input_16 = kiwi::utf8To16(input);
-    kiwi::TokenResult result = kiwi.analyze(input_16, kiwi::Match::all);
+    kiwi::TokenResult result = kiwi.analyze(input_16, kiwi::Match::all | kiwi::Match::splitComplex);
 
     // Remove plaintext tokens
     std::vector<kiwi::TokenInfo> raw_tokens = result.first;

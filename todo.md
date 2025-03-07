@@ -1,0 +1,3 @@
+- Subdivide Kiwi tokens to allow more fine-grained grammar point emission. Examples: 어요/EF, 나요/EF, ... (or auto emit multiple points?)
+- Handle NNG+하:XSV Noun->Verb constructions (add new grammar point?)
+- 

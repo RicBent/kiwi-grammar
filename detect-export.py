@@ -20,7 +20,7 @@ def main():
 
     with open(out_path, 'w') as fout:
 
-        for point_file in point_files:
+        for point_file in sorted(point_files):
             num_total += 1
             point_path = os.path.join(point_dir, point_file)
 
@@ -37,6 +37,8 @@ def main():
             if detect:
                 fout.write(f'{slug}:{type_[0]}:{post_ruleset}:{detect}\n')
                 num_handled += 1
+            else:
+                print(f'No detect for {slug}')
     
     print(f'Handled {num_handled}/{num_total} points')
 

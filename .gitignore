@@ -1,0 +1,6 @@
+/build*
+/model
+/detect-rules
+
+.vscode
+.DS_Store

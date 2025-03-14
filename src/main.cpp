@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
             std::cerr << "Usage: " << argv[0] << " [-m MODEL_DIR] [-r RULES_PATH] [-s]" << std::endl;
             std::cerr << "  -m MODEL_DIR: Kiwi model directory (default: model)" << std::endl;
             std::cerr << "  -r RULES_PATH: Path to the rules file or directory (default: detect-rules)" << std::endl;
+            std::cerr << "  -s: Strip HTML tags" << std::endl;
             return 1;
         }
     }
@@ -54,7 +55,7 @@ int main(int argc, char *argv[])
     kiwi::KiwiBuilder builder = kiwi::KiwiBuilder{model_dir, 0, kiwi::BuildOption::default_, false};
 
     Rules rules;
-    rules.kiwi = builder.build(kiwi::DefaultTypoSet::basicTypoSetWithContinualAndLengthening);
+    rules.kiwi = builder.build();
     rules.load(rules_path);
 
     while (true)

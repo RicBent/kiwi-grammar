@@ -51,3 +51,7 @@ Usage: ./kiwi-grammar [-m MODEL_DIR] [-r RULES_PATH] [-s]
 ```
 
 `RULES_PATH` can either be the path the `point` directory in the Kimchi Grammar repository, or a file exported from the `detect-export.py` script.
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0). See the [LICENSE](LICENSE) file for details.

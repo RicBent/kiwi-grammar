@@ -15,7 +15,7 @@ void init(const std::string model_path)
     rules.loadFromFile(model_path + "/detect-rules");
 }
 
-std::string analyze(const std::string input)
+nlohmann::json _analyze(const std::string input)
 {
     const std::vector<Token> tokens = rules.analyze(input);
 
@@ -33,8 +33,8 @@ std::string analyze(const std::string input)
 
         nlohmann::json tokenJson = {
             {"surface", token.surface},
-            {"term", token.term},
-            {"tag", kiwi::tagToString(token.tag)},
+            {"word", token.term},
+            {"pos", kiwi::tagToString(token.tag)},
         };
 
         nlohmann::json suffixes = nlohmann::json::array();
@@ -51,6 +51,24 @@ std::string analyze(const std::string input)
         result.push_back(tokenJson);
     }
 
+    return result;
+}
+
+std::string analyze(const std::string input)
+{
+    return _analyze(input).dump();
+}
+
+std::string analyzeMany(const std::string inputJson)
+{
+    const nlohmann::json input = nlohmann::json::parse(inputJson);
+    nlohmann::json result = nlohmann::json::array();
+
+    for (const auto &inputItem : input)
+    {
+        result.push_back(_analyze(inputItem));
+    }
+
     return result.dump();
 }
 
@@ -59,4 +77,5 @@ EMSCRIPTEN_BINDINGS(grammar)
     emscripten::constant("KIWI_VERSION", emscripten::val(KIWI_VERSION_STRING));
     emscripten::function("init", &init);
     emscripten::function("analyze", &analyze);
+    emscripten::function("analyzeMany", &analyzeMany);
 }

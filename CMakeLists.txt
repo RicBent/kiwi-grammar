@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(grammar VERSION 0.1.0)
+project(kiwi-grammar VERSION 0.1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -28,13 +28,13 @@ set(COMMON_SRCS
 )
 
 if (EMSCRIPTEN) 
-    add_executable(grammar ${COMMON_SRCS} src/main-wasm.cpp)
-    target_link_libraries(grammar PRIVATE kiwi_static)
+    add_executable(kiwi-grammar ${COMMON_SRCS} src/main-wasm.cpp)
+    target_link_libraries(kiwi-grammar PRIVATE kiwi_static)
     
-    set_target_properties(grammar PROPERTIES
+    set_target_properties(kiwi-grammar PROPERTIES
         LINK_FLAGS "--bind -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 -s DYNAMIC_EXECUTION=0 -s EXPORT_ES6=1 -s ENVIRONMENT=worker -s USE_ES6_IMPORT_META=0 -s MODULARIZE=1 -s EXPORT_NAME=grammar -s 'EXPORTED_RUNTIME_METHODS=[\"FS\"]'"
     )
 else()
-    add_executable(grammar ${COMMON_SRCS} src/main.cpp)
-    target_link_libraries(grammar PRIVATE kiwi_static)
+    add_executable(kiwi-grammar ${COMMON_SRCS} src/main.cpp)
+    target_link_libraries(kiwi-grammar PRIVATE kiwi_static)
 endif()

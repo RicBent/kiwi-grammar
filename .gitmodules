@@ -1,0 +1,6 @@
+[submodule "Kiwi"]
+	path = Kiwi
+	url = https://github.com/bab2min/Kiwi.git
+[submodule "kimchi-grammar"]
+	path = kimchi-grammar
+	url = https://github.com/RicBent/kimchi-grammar

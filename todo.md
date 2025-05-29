@@ -1,2 +1,1 @@
-- Handle NNG+하:XSV Noun->Verb constructions (add new grammar point?)
 - Allow rules to have verb and noun detects

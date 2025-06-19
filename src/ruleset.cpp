@@ -105,7 +105,7 @@ size_t RuleSet::find_kiwi_id(const kiwi::Kiwi &kiwi, const std::string &in)
     if (colon_idx != std::string::npos)
         tag = kiwi::toPOSTag(kiwi::utf8To16(in.substr(colon_idx + 1)));
 
-    std::vector<const kiwi::Morpheme *> morphemes = kiwi.findMorpheme(kiwi::utf8To16(word), tag);
+    std::vector<const kiwi::Morpheme *> morphemes = kiwi.findMorphemes(kiwi::utf8To16(word), tag);
 
     if (morphemes.empty())
         return RuleSet::ID_ERROR_NOT_FOUND;
